@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LightningHub | Gestão de Frotas</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">⚡</div>
+
+                <div>
+                    <h1>LightningHub</h1>
+                    <span>Gestão de Frotas</span>
+                </div>
+            </div>
+
+
+            <!-- NAVEGAÇÃO -->
+            <nav class="navigation">
+
+                <p class="nav-title">PRINCIPAL</p>
+
+                <a href="#" class="nav-link active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>🚗</span>
+                    Veículos
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>👤</span>
+                    Motoristas
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>🔧</span>
+                    Manutenções
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>📄</span>
+                    Documentos
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>📊</span>
+                    Relatórios
+                </a>
+
+            </nav>
+
+
+            <!-- STATUS DO SISTEMA -->
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>Sistema Online</strong>
+                    <small>Todos os serviços operacionais</small>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+
+
+            <!-- HEADER -->
+            <header class="topbar">
+
+                <div class="page-title">
+
+                    <span class="breadcrumb">
+                        Workspace / Dashboard
+                    </span>
+
+                    <h2>Dashboard</h2>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button class="icon-button" aria-label="Notificações">
+                        🔔
+                    </button>
+
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            LM
+                        </div>
+
+                        <div class="profile-info">
+                            <strong>Lawane Moraes</strong>
+                            <span>Administradora</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- BOAS-VINDAS -->
+            <section class="welcome">
+
+                <div>
+
+                    <p class="eyebrow">
+                        VISÃO GERAL DA FROTA
+                    </p>
+
+                    <h3>
+                        Bem-vinda de volta, Lawane.
+                    </h3>
+
+                    <p>
+                        Veja o que está acontecendo com sua frota hoje.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-button">
+                    + Adicionar veículo
+                </button>
+
+            </section>
+
+
+            <!-- CARDS DE ESTATÍSTICAS -->
+            <section class="stats-grid">
+
+
+                <!-- TOTAL DE VEÍCULOS -->
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        🚗
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Total de veículos</span>
+
+                        <strong>12</strong>
+
+                        <small>
+                            +2 este mês
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <!-- VEÍCULOS ATIVOS -->
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        ⚡
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Veículos ativos</span>
+
+                        <strong>9</strong>
+
+                        <small>
+                            75% da frota
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MANUTENÇÕES -->
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        🔧
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Em manutenção</span>
+
+                        <strong>2</strong>
+
+                        <small>
+                            Requer atenção
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MOTORISTAS -->
+                <article class="stat-card">
+
+                    <div class="stat-icon">
+                        👤
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>Motoristas cadastrados</span>
+
+                        <strong>8</strong>
+
+                        <small>
+                            Motoristas registrados
+                        </small>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ÁREA PRINCIPAL DO DASHBOARD -->
+            <section class="dashboard-grid">
+
+
+                <!-- STATUS DOS VEÍCULOS -->
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                FROTA
+                            </p>
+
+                            <h3>
+                                Status dos veículos
+                            </h3>
+
+                        </div>
+
+                        <a href="#">
+                            Ver todos
+                        </a>
+
+                    </div>
+
+
+                    <div class="status-list">
+
+
+                        <!-- VEÍCULO 1 -->
+                        <div class="vehicle-row">
+
+                            <div class="vehicle-info">
+
+                                <div class="vehicle-icon">
+                                    🚙
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Ford Ranger
+                                    </strong>
+
+                                    <span>
+                                        ABC-1234
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="badge operational">
+                                Operacional
+                            </span>
+
+                        </div>
+
+
+                        <!-- VEÍCULO 2 -->
+                        <div class="vehicle-row">
+
+                            <div class="vehicle-info">
+
+                                <div class="vehicle-icon">
+                                    🚐
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Fiat Ducato
+                                    </strong>
+
+                                    <span>
+                                        DEF-5678
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="badge maintenance">
+                                Em manutenção
+                            </span>
+
+                        </div>
+
+
+                        <!-- VEÍCULO 3 -->
+                        <div class="vehicle-row">
+
+                            <div class="vehicle-info">
+
+                                <div class="vehicle-icon">
+                                    🚗
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Toyota Corolla
+                                    </strong>
+
+                                    <span>
+                                        GHI-9012
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="badge operational">
+                                Operacional
+                            </span>
+
+                        </div>
+
+
+                        <!-- VEÍCULO 4 -->
+                        <div class="vehicle-row">
+
+                            <div class="vehicle-info">
+
+                                <div class="vehicle-icon">
+                                    🚚
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Mercedes Sprinter
+                                    </strong>
+
+                                    <span>
+                                        JKL-3456
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <span class="badge inactive">
+                                Inativo
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRÓXIMAS MANUTENÇÕES -->
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                MANUTENÇÃO
+                            </p>
+
+                            <h3>
+                                Próximas manutenções
+                            </h3>
+
+                        </div>
+
+                        <a href="#">
+                            Ver todas
+                        </a>
+
+                    </div>
+
+
+                    <div class="maintenance-list">
+
+
+                        <div class="maintenance-item">
+
+                            <div class="maintenance-date">
+                                <strong>22</strong>
+                                <span>SET</span>
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Troca de óleo
+                                </strong>
+
+                                <span>
+                                    Ford Ranger
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="maintenance-item">
+
+                            <div class="maintenance-date">
+                                <strong>25</strong>
+                                <span>SET</span>
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Inspeção dos freios
+                                </strong>
+
+                                <span>
+                                    Fiat Ducato
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="maintenance-item">
+
+                            <div class="maintenance-date">
+                                <strong>02</strong>
+                                <span>OUT</span>
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Troca de pneus
+                                </strong>
+
+                                <span>
+                                    Toyota Corolla
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ATIVIDADES RECENTES -->
+            <section class="panel activity-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            ATIVIDADES
+                        </p>
+
+                        <h3>
+                            Atividades recentes
+                        </h3>
+
+                    </div>
+
+                    <a href="#">
+                        Ver histórico
+                    </a>
+
+                </div>
+
+
+                <div class="activity-list">
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            +
+                        </div>
+
+                        <div class="activity-content">
+
+                            <strong>
+                                Novo veículo cadastrado
+                            </strong>
+
+                            <span>
+                                Ford Ranger • ABC-1234
+                            </span>
+
+                        </div>
+
+                        <time>
+                            há 10 min
+                        </time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            🔧
+                        </div>
+
+                        <div class="activity-content">
+
+                            <strong>
+                                Manutenção agendada
+                            </strong>
+
+                            <span>
+                                Fiat Ducato • Inspeção dos freios
+                            </span>
+
+                        </div>
+
+                        <time>
+                            há 1 hora
+                        </time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            👤
+                        </div>
+
+                        <div class="activity-content">
+
+                            <strong>
+                                Motorista cadastrado
+                            </strong>
+
+                            <span>
+                                Carlos Henrique
+                            </span>
+
+                        </div>
+
+                        <time>
+                            há 3 horas
+                        </time>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="footer">
+
+                <span>
+                    ⚡ LightningHub
+                </span>
+
+                <span>
+                    Sistema de Gestão de Frotas
+                </span>
+
+                <span>
+                    v0.1.0
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

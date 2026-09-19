@@ -1,0 +1,999 @@
+/* ========================================
+   LIGHTNINGHUB
+   Fleet Management System
+   ======================================== */
+
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* CONFIGURAÇÕES GERAIS */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0b1120;
+    color: #e5e7eb;
+}
+
+
+/* APP */
+
+.app {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #0f172a;
+    border-right: 1px solid #1e293b;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px 16px;
+}
+
+
+/* MARCA */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 8px 10px 28px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #2563eb;
+    border-radius: 10px;
+
+    font-size: 22px;
+}
+
+.brand h1 {
+    font-size: 18px;
+    color: #f8fafc;
+}
+
+.brand span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 11px;
+    color: #64748b;
+}
+
+
+/* NAVEGAÇÃO */
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-title {
+    margin: 0 10px 10px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    color: #475569;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 11px 12px;
+
+    border-radius: 8px;
+
+    color: #94a3b8;
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.nav-link span {
+    width: 20px;
+
+    text-align: center;
+}
+
+.nav-link:hover {
+    background-color: #172554;
+    color: #dbeafe;
+}
+
+.nav-link.active {
+    background-color: #1d4ed8;
+    color: #ffffff;
+}
+
+
+/* STATUS DO SISTEMA */
+
+.sidebar-status {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 12px;
+
+    background-color: #111c33;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background-color: #22c55e;
+}
+
+.sidebar-status strong {
+    display: block;
+
+    font-size: 12px;
+    color: #e2e8f0;
+}
+
+.sidebar-status small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 10px;
+    color: #64748b;
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+   ======================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+
+    padding: 28px 32px;
+
+    background-color: #0b1120;
+}
+
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 32px;
+}
+
+
+/* TÍTULO DA PÁGINA */
+
+.page-title .breadcrumb {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 12px;
+    color: #64748b;
+}
+
+.page-title h2 {
+    font-size: 26px;
+    color: #f8fafc;
+}
+
+
+/* AÇÕES DO HEADER */
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* BOTÃO DE NOTIFICAÇÃO */
+
+.icon-button {
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+
+    background-color: #111827;
+
+    color: #94a3b8;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.icon-button:hover {
+    background-color: #172554;
+    color: #dbeafe;
+}
+
+
+/* PERFIL */
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #1d4ed8;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.profile-info strong {
+    display: block;
+
+    font-size: 13px;
+    color: #e2e8f0;
+}
+
+.profile-info span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* ========================================
+   BOAS-VINDAS
+   ======================================== */
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+    padding: 24px;
+
+    background: linear-gradient(
+        135deg,
+        #111c33,
+        #0f172a
+    );
+
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+}
+
+.eyebrow {
+    margin-bottom: 6px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    color: #60a5fa;
+}
+
+.welcome h3 {
+    margin-bottom: 6px;
+
+    font-size: 22px;
+    color: #f8fafc;
+}
+
+.welcome > div > p:last-child {
+    font-size: 13px;
+    color: #64748b;
+}
+
+
+/* BOTÃO PRINCIPAL */
+
+.primary-button {
+    padding: 11px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.primary-button:hover {
+    background-color: #3b82f6;
+    transform: translateY(-1px);
+}
+
+
+/* ========================================
+   CARDS DE ESTATÍSTICAS
+   ======================================== */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 20px;
+
+    background-color: #111827;
+
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+
+    transition: 0.2s;
+}
+
+.stat-card:hover {
+    border-color: #2563eb;
+
+    transform: translateY(-2px);
+}
+
+
+/* ÍCONE DO CARD */
+
+.stat-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background-color: #172554;
+
+    font-size: 19px;
+}
+
+
+/* CONTEÚDO DO CARD */
+
+.stat-content span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 11px;
+    color: #64748b;
+}
+
+.stat-content strong {
+    display: block;
+
+    font-size: 24px;
+
+    color: #f8fafc;
+}
+
+.stat-content small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    color: #60a5fa;
+}
+
+/* ========================================
+   GRID DO DASHBOARD
+   ======================================== */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: 1.4fr 1fr;
+
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+
+/* ========================================
+   PAINÉIS
+   ======================================== */
+
+.panel {
+    background-color: #111827;
+
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+
+    padding: 22px;
+}
+
+
+/* CABEÇALHO DOS PAINÉIS */
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.panel-header h3 {
+    font-size: 16px;
+    color: #f8fafc;
+}
+
+.panel-header a {
+    font-size: 11px;
+
+    color: #60a5fa;
+
+    text-decoration: none;
+}
+
+.panel-header a:hover {
+    color: #93c5fd;
+}
+
+
+/* ========================================
+   STATUS DOS VEÍCULOS
+   ======================================== */
+
+.status-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #1e293b;
+}
+
+.vehicle-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+/* INFORMAÇÕES DO VEÍCULO */
+
+.vehicle-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vehicle-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #172554;
+
+    border-radius: 8px;
+
+    font-size: 17px;
+}
+
+.vehicle-info strong {
+    display: block;
+
+    font-size: 13px;
+
+    color: #e2e8f0;
+}
+
+.vehicle-info span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    color: #64748b;
+}
+
+
+/* BADGES */
+
+.badge {
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.badge.operational {
+    background-color: #052e1a;
+    color: #4ade80;
+}
+
+.badge.maintenance {
+    background-color: #422006;
+    color: #fbbf24;
+}
+
+.badge.inactive {
+    background-color: #1e293b;
+    color: #94a3b8;
+}
+
+
+/* ========================================
+   PRÓXIMAS MANUTENÇÕES
+   ======================================== */
+
+.maintenance-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.maintenance-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #1e293b;
+}
+
+.maintenance-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+/* DATA */
+
+.maintenance-date {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #172554;
+
+    border-radius: 8px;
+}
+
+.maintenance-date strong {
+    font-size: 15px;
+    color: #f8fafc;
+}
+
+.maintenance-date span {
+    margin-top: 2px;
+
+    font-size: 8px;
+    font-weight: bold;
+
+    color: #60a5fa;
+}
+
+
+/* INFORMAÇÕES */
+
+.maintenance-item > div:last-child strong {
+    display: block;
+
+    font-size: 12px;
+
+    color: #e2e8f0;
+}
+
+.maintenance-item > div:last-child span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    color: #64748b;
+}
+
+/* ========================================
+   ATIVIDADES RECENTES
+   ======================================== */
+
+.activity-panel {
+    margin-bottom: 24px;
+}
+
+
+/* LISTA DE ATIVIDADES */
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ITEM */
+
+.activity-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #1e293b;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+/* ÍCONE */
+
+.activity-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background-color: #172554;
+
+    color: #60a5fa;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* CONTEÚDO */
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content strong {
+    display: block;
+
+    font-size: 12px;
+
+    color: #e2e8f0;
+}
+
+.activity-content span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    color: #64748b;
+}
+
+
+/* HORÁRIO */
+
+.activity-item time {
+    font-size: 10px;
+
+    color: #475569;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 4px 4px;
+
+    font-size: 10px;
+
+    color: #475569;
+}
+
+.footer span:first-child {
+    color: #64748b;
+}
+
+.footer span:first-child::first-letter {
+    color: #60a5fa;
+}
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+
+/* TABLETS */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        padding: 24px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* CELULARES */
+
+@media (max-width: 768px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+
+    /* SIDEBAR */
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+
+        padding: 16px;
+    }
+
+    .brand {
+        padding: 4px 6px 18px;
+    }
+
+    .navigation {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 6px;
+    }
+
+    .nav-title {
+        display: none;
+    }
+
+    .nav-link {
+        justify-content: center;
+
+        padding: 10px 6px;
+
+        font-size: 11px;
+    }
+
+    .nav-link span {
+        display: none;
+    }
+
+    .sidebar-status {
+        display: none;
+    }
+
+
+    /* CONTEÚDO */
+
+    .main-content {
+        padding: 20px 16px;
+    }
+
+
+    /* HEADER */
+
+    .topbar {
+        margin-bottom: 24px;
+    }
+
+    .page-title .breadcrumb {
+        font-size: 10px;
+    }
+
+    .page-title h2 {
+        font-size: 22px;
+    }
+
+    .topbar-actions {
+        gap: 10px;
+    }
+
+    .profile-info {
+        display: none;
+    }
+
+
+    /* BOAS-VINDAS */
+
+    .welcome {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 18px;
+
+        padding: 20px;
+    }
+
+    .welcome h3 {
+        font-size: 19px;
+    }
+
+    .primary-button {
+        width: 100%;
+    }
+
+
+    /* ESTATÍSTICAS */
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* DASHBOARD */
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* PAINÉIS */
+
+    .panel {
+        padding: 18px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        flex-direction: column;
+
+        gap: 8px;
+
+        text-align: center;
+    }
+
+}
+
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 480px) {
+
+    .navigation {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-link {
+        justify-content: flex-start;
+    }
+
+    .nav-link span {
+        display: inline;
+
+        width: 18px;
+    }
+
+    .vehicle-row {
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+    .badge {
+        margin-top: 5px;
+    }
+
+    .activity-item time {
+        display: none;
+    }
+
+}
