@@ -32,32 +32,32 @@
 
                 <p class="nav-title">PRINCIPAL</p>
 
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link active" data-page="dashboard">
                     <span>▦</span>
                     Dashboard
                 </a>
 
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" data-page="vehicles">
                     <span>🚗</span>
                     Veículos
                 </a>
 
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" data-page="drivers">
                     <span>👤</span>
                     Motoristas
                 </a>
 
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" data-page="maintenance">
                     <span>🔧</span>
                     Manutenções
                 </a>
 
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" data-page="documents">
                     <span>📄</span>
                     Documentos
                 </a>
 
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" data-page="reports">
                     <span>📊</span>
                     Relatórios
                 </a>
@@ -83,17 +83,16 @@
         <!-- CONTEÚDO PRINCIPAL -->
         <main class="main-content">
 
-
             <!-- HEADER -->
             <header class="topbar">
 
                 <div class="page-title">
 
-                    <span class="breadcrumb">
+                    <span class="breadcrumb" id="breadcrumb">
                         Workspace / Dashboard
                     </span>
 
-                    <h2>Dashboard</h2>
+                    <h2 id="page-title">Dashboard</h2>
 
                 </div>
 
@@ -122,7 +121,9 @@
 
             </header>
 
-
+            <!-- ÁREA DAS PÁGINAS -->
+            <div id="page-content"></div>
+            
             <!-- BOAS-VINDAS -->
             <section class="welcome">
 
