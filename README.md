@@ -39,10 +39,10 @@ O projeto está atualmente na fase inicial de construção da interface e implem
 
 ### Atualmente trabalhando em:
 
-* Dashboard
-* Navegação do sistema
-* Interface responsiva
-* Estrutura inicial do projeto
+* Desenvolvimento dos módulos do sistema
+* Funcionalidades da página de veículos
+* Interação com JavaScript
+* Estruturação dos próximos módulos
 
 ---
 
@@ -86,7 +86,11 @@ O projeto está atualmente na fase inicial de construção da interface e implem
 
 * [ ] Cadastro de veículos
 * [ ] Edição de veículos
-* [ ] Visualização de veículos
+* [x] Visualização de veículos
+* [x] Busca de veículos
+* [x] Filtro por status
+* [x] Visualização de detalhes
+* [x] Fechamento dos detalhes
 * [ ] Controle de status
 
 ### Motoristas
@@ -140,16 +144,16 @@ A estrutura será atualizada conforme novas partes do sistema forem desenvolvida
 
 ## 🗺️ Próximos passos
 
-1. Finalizar a estrutura visual do dashboard.
-2. Desenvolver as telas dos módulos.
-3. Implementar as interações com JavaScript.
-4. Modelar o banco de dados.
-5. Integrar o PostgreSQL.
-6. Desenvolver o back-end com Node.js e Express.
-7. Conectar o front-end à API.
-8. Implementar autenticação e controle de acesso.
-9. Criar relatórios e indicadores.
-10. Realizar testes e melhorias no sistema.
+1. Desenvolver o cadastro de veículos;
+2. Implementar a edição e controle de status dos veículos;
+3. Desenvolver as telas dos próximos módulos;
+4. Implementar novas interações com JavaScript;
+5. Modelar o banco de dados.
+6. Integrar o PostgreSQL.
+7. Desenvolver o back-end com Node.js e Express.
+8. Conectar o front-end à API.
+9. Implementar autenticação e controle de acesso.
+10. Criar relatórios, indicadores e realizar testes e melhorias.
 
 ---
 
