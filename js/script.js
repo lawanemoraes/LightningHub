@@ -55,6 +55,37 @@ navLinks.forEach((link) => {
                 element.style.display = "none";
             });
 
+            const vehicles = [
+                {
+                    name: "Ford Ranger",
+                    plate: "ABC-1234",
+                    year: "2024",
+                    type: "Picape",
+                    status: "Operacional"
+                },
+                {
+                    name: "Fiat Ducato",
+                    plate: "DEF-5678",
+                    year: "2023",
+                    type: "Van",
+                    status: "Em manutenção"
+                },
+                {
+                    name: "Toyota Corolla",
+                    plate: "GHI-9012",
+                    year: "2022",
+                    type: "Sedan",
+                    status: "Operacional"
+                },
+                {
+                    name: "Mercedes Sprinter",
+                    plate: "JKL-3456",
+                    year: "2021",
+                    type: "Utilitário",
+                    status: "Inativo"
+                }
+            ];
+
             pageContent.innerHTML = `
                 <section class="panel vehicles-page">
 
@@ -346,7 +377,27 @@ navLinks.forEach((link) => {
 
             vehicleSearch.addEventListener("input", filterVehicles);
             vehicleFilter.addEventListener("change", filterVehicles);
-            
+
+                        const vehicleButtons = document.querySelectorAll(".table-action");
+
+            vehicleButtons.forEach((button, index) => {
+
+                button.addEventListener("click", () => {
+
+                    const vehicle = vehicles[index];
+
+                    alert(`
+Veículo: ${vehicle.name}
+Placa: ${vehicle.plate}
+Ano: ${vehicle.year}
+Tipo: ${vehicle.type}
+Status: ${vehicle.status}
+                    `);
+
+                });
+
+            });
+
             return;
         }
 
