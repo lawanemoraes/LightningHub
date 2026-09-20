@@ -320,6 +320,38 @@ navLinks.forEach((link) => {
 
                     </div>
 
+                    <!-- DETALHES DO VEÍCULO -->
+
+                    <div class="vehicle-details" id="vehicle-details">
+
+                        <div class="vehicle-details-header">
+
+                            <div>
+                                <p class="eyebrow">
+                                    DETALHES
+                                </p>
+
+                                <h3 id="vehicle-details-title">
+                                    Selecione um veículo
+                                </h3>
+                            </div>
+                        
+                            <button class="table-action" id="close-details">
+                                Fechar
+                            </button>
+                        
+                        </div>
+
+                        <div class="vehicle-details-content">
+
+                            <p>
+                                Clique em "Ver" para visualizar as informações do veículo.
+                            </p>
+                        
+                        </div>
+                    
+                    </div>
+
                 </section>
             `;
 
@@ -378,23 +410,41 @@ navLinks.forEach((link) => {
             vehicleSearch.addEventListener("input", filterVehicles);
             vehicleFilter.addEventListener("change", filterVehicles);
 
-                        const vehicleButtons = document.querySelectorAll(".table-action");
+            const vehicleButtons = document.querySelectorAll(".vehicle-table-row .table-action");
+
+            const vehicleDetails = document.querySelector("#vehicle-details");
+            const vehicleDetailsTitle = document.querySelector("#vehicle-details-title");
+            const vehicleDetailsContent = document.querySelector(".vehicle-details-content");
+            const closeDetailsContent = document.querySelector("#close-details");
 
             vehicleButtons.forEach((button, index) => {
 
                 button.addEventListener("click", () => {
-
+                    
                     const vehicle = vehicles[index];
 
-                    alert(`
-Veículo: ${vehicle.name}
-Placa: ${vehicle.plate}
-Ano: ${vehicle.year}
-Tipo: ${vehicle.type}
-Status: ${vehicle.status}
-                    `);
+                    vehicleDetailsTitle.textContent = vehicle.name;
+
+                    vehicleDetailsContent.innerHTML = `
+                        <p><strong>Placa:</strong> ${vehicle.plate}</p>
+                        <p><strong>Ano:</strong> ${vehicle.year}</p>
+                        <p><strong>Tipo:</strong> ${vehicle.type}</p>
+                        <p><strong>Status:</strong> ${vehicle.status}</p>    
+                    `;
 
                 });
+
+            });
+
+            closeDetailsContent.addEventListener("click", () => {
+
+                vehicleDetailsTitle.textContent = "Selecione um veículo";
+                
+                vehicleDetailsContent.innerHTML = `
+                    <p>
+                        Clique em "Ver" para visualizar as informações do veículo.
+                    </p>
+                `;
 
             });
 
