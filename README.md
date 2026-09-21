@@ -35,15 +35,17 @@ A proposta é transformar o LightningHub em um projeto cada vez mais completo ao
 
 **Em desenvolvimento**
 
-O projeto está atualmente na fase de construção da interface e implementação das funcionalidades dos módulos do sistema.
+O projeto já possui a estrutura inicial do sistema, banco de dados PostgreSQL, back-end com Node.js e Express e integração entre o front-end e a API.
+
+Atualmente, o módulo de **veículos** já possui integração funcional com o banco de dados, permitindo consultar e cadastrar veículos através da API.
 
 ### Atualmente trabalhando em:
 
-* Desenvolvimento e integração dos módulos do sistema
-* Funcionalidades do módulo de veículos
-* Interações e manipulação de dados com JavaScript
-* Estruturação dos próximos módulos
-* Preparação da arquitetura para futura integração com banco de dados
+* Evolução do módulo de veículos
+* Desenvolvimento dos próximos módulos do sistema
+* Integração entre front-end, API e banco de dados
+* Implementação de novas funcionalidades
+* Melhorias na estrutura e organização do projeto
 
 ---
 
@@ -59,6 +61,9 @@ O projeto está atualmente na fase de construção da interface e implementaçã
 
 * Node.js
 * Express
+* REST API
+* CORS
+* dotenv
 
 ### Banco de dados
 
@@ -69,6 +74,25 @@ O projeto está atualmente na fase de construção da interface e implementaçã
 * Git
 * GitHub
 * VS Code
+* Live Server
+
+---
+
+## 🏗️ Arquitetura
+
+O projeto utiliza a seguinte estrutura de comunicação:
+
+    Front-end
+        ↓
+    JavaScript
+        ↓
+    Node.js + Express
+        ↓
+    REST API
+        ↓
+    PostgreSQL
+
+O front-end realiza requisições para a API, que é responsável por processar as operações e realizar a comunicação com o banco de dados.
 
 ---
 
@@ -79,8 +103,9 @@ O projeto está atualmente na fase de construção da interface e implementaçã
 * [x] Dashboard inicial
 * [x] Cards de informações
 * [x] Status dos veículos
-* [x] Próximas manutenções
-* [x] Atividades recentes
+* [ ] Botões de acesso aos módulos
+* [ ] Próximas manutenções com dados reais
+* [ ] Atividades recentes com dados reais
 * [x] Layout responsivo
 
 ### Veículos
@@ -93,6 +118,9 @@ O projeto está atualmente na fase de construção da interface e implementaçã
 * [x] Visualização de detalhes
 * [x] Fechamento dos detalhes
 * [x] Controle de status
+* [x] Consulta de veículos através da API
+* [x] Cadastro de veículos através da API
+* [x] Persistência dos dados no PostgreSQL
 
 ### Motoristas
 
@@ -120,26 +148,85 @@ O projeto está atualmente na fase de construção da interface e implementaçã
 
 ### Sistema
 
-* [ ] Integração com PostgreSQL
-* [ ] Desenvolvimento da API
+* [x] Integração com PostgreSQL
+* [x] Desenvolvimento da API REST inicial
+* [x] Integração entre front-end e API
 * [ ] Autenticação de usuários
 * [ ] Controle de acesso
 
 ---
 
+## 🗄️ Banco de dados
+
+O banco de dados do LightningHub utiliza **PostgreSQL**.
+
+Atualmente, o sistema possui as seguintes entidades:
+
+* `veiculos`
+* `motoristas`
+* `manutencoes`
+* `documentos`
+
+### Relacionamentos
+
+    VEICULOS
+       │
+       ├──────< MANUTENCOES
+       │
+       └──────< DOCUMENTOS
+
+    MOTORISTAS
+       └── cadastro independente
+
+O arquivo `database/schema.sql` contém a estrutura SQL utilizada para criação das tabelas e configuração inicial do banco.
+
+---
+
+## 🔌 API
+
+O back-end utiliza **Node.js + Express** para disponibilizar uma API REST.
+
+### Veículos
+
+#### Buscar veículos
+
+    GET /api/veiculos
+
+Retorna os veículos cadastrados no banco de dados.
+
+#### Cadastrar veículo
+
+    POST /api/veiculos
+
+Recebe os dados do veículo em formato JSON e realiza o cadastro no PostgreSQL.
+
+---
+
 ## 📁 Estrutura do projeto
 
-```text
 LightningHub/
-├── index.html
-├── README.md
-├── css/
-│   └── style.css
-└── js/
-    └── script.js
-```
 
-A estrutura será atualizada conforme novas partes do sistema forem desenvolvidas.
+    ├── index.html
+    ├── README.md
+    │
+    ├── css/
+    │   └── style.css
+    │
+    ├── js/
+    │   └── script.js
+    │
+    ├── database/
+    │   └── schema.sql
+    │
+    └── backend/
+        ├── .env
+        ├── .gitignore
+        ├── database.js
+        ├── package.json
+        ├── package-lock.json
+        └── server.js
+
+O arquivo `.env` contém as configurações locais de acesso ao banco de dados e não é versionado no GitHub.
 
 ---
 
@@ -147,22 +234,34 @@ A estrutura será atualizada conforme novas partes do sistema forem desenvolvida
 
 1. Implementar edição de veículos;
 2. Finalizar as funcionalidades do módulo de veículos;
-3. Desenvolver os módulos de motoristas, manutenções, documentos e relatórios;
-4. Implementar novas interações e validações com JavaScript;
-5. Modelar o banco de dados;
-6. Integrar o PostgreSQL;
-7. Desenvolver o back-end com Node.js e Express;
-8. Conectar o front-end à API;
-9. Implementar autenticação e controle de acesso;
-10. Criar relatórios, indicadores e realizar testes e melhorias.
+3. Desenvolver o módulo de motoristas;
+4. Desenvolver o módulo de manutenções;
+5. Desenvolver o módulo de documentos;
+6. Implementar validações e melhorias na API;
+7. Implementar autenticação e controle de acesso;
+8. Desenvolver relatórios e indicadores;
+9. Realizar testes e melhorias gerais;
+10. Continuar evoluindo a arquitetura e as funcionalidades do sistema.
 
 ---
 
 ## ⚡ Sobre o desenvolvimento
 
-O LightningHub está sendo desenvolvido **passo a passo**, começando pela estrutura e interface e avançando gradualmente para as funcionalidades, banco de dados e back-end.
+O LightningHub está sendo desenvolvido **passo a passo**, acompanhando minha evolução como estudante de **Análise e Desenvolvimento de Sistemas**.
 
-A ideia é registrar essa evolução através do próprio desenvolvimento e do versionamento do projeto, mantendo o histórico das mudanças e aprendizados ao longo do caminho.
+O projeto busca aplicar na prática conceitos de:
+
+* desenvolvimento web;
+* JavaScript;
+* Node.js;
+* APIs REST;
+* bancos de dados relacionais;
+* SQL;
+* integração entre sistemas;
+* Git e GitHub;
+* organização de projetos.
+
+O desenvolvimento também serve como forma de documentar minha evolução técnica e construir um projeto que possa fazer parte do meu portfólio.
 
 ---
 
