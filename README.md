@@ -35,14 +35,15 @@ A proposta é transformar o LightningHub em um projeto cada vez mais completo ao
 
 **Em desenvolvimento**
 
-O projeto está atualmente na fase inicial de construção da interface e implementação das primeiras funcionalidades.
+O projeto está atualmente na fase de construção da interface e implementação das funcionalidades dos módulos do sistema.
 
 ### Atualmente trabalhando em:
 
-* Desenvolvimento dos módulos do sistema
-* Funcionalidades da página de veículos
-* Interação com JavaScript
+* Desenvolvimento e integração dos módulos do sistema
+* Funcionalidades do módulo de veículos
+* Interações e manipulação de dados com JavaScript
 * Estruturação dos próximos módulos
+* Preparação da arquitetura para futura integração com banco de dados
 
 ---
 
@@ -84,14 +85,14 @@ O projeto está atualmente na fase inicial de construção da interface e implem
 
 ### Veículos
 
-* [ ] Cadastro de veículos
+* [x] Cadastro de veículos
 * [ ] Edição de veículos
 * [x] Visualização de veículos
 * [x] Busca de veículos
 * [x] Filtro por status
 * [x] Visualização de detalhes
 * [x] Fechamento dos detalhes
-* [ ] Controle de status
+* [x] Controle de status
 
 ### Motoristas
 
@@ -144,15 +145,15 @@ A estrutura será atualizada conforme novas partes do sistema forem desenvolvida
 
 ## 🗺️ Próximos passos
 
-1. Desenvolver o cadastro de veículos;
-2. Implementar a edição e controle de status dos veículos;
-3. Desenvolver as telas dos próximos módulos;
-4. Implementar novas interações com JavaScript;
-5. Modelar o banco de dados.
-6. Integrar o PostgreSQL.
-7. Desenvolver o back-end com Node.js e Express.
-8. Conectar o front-end à API.
-9. Implementar autenticação e controle de acesso.
+1. Implementar edição de veículos;
+2. Finalizar as funcionalidades do módulo de veículos;
+3. Desenvolver os módulos de motoristas, manutenções, documentos e relatórios;
+4. Implementar novas interações e validações com JavaScript;
+5. Modelar o banco de dados;
+6. Integrar o PostgreSQL;
+7. Desenvolver o back-end com Node.js e Express;
+8. Conectar o front-end à API;
+9. Implementar autenticação e controle de acesso;
 10. Criar relatórios, indicadores e realizar testes e melhorias.
 
 ---
