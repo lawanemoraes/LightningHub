@@ -23,36 +23,36 @@ const dashboardElements = document.querySelectorAll(
 // DADOS DOS VEÍCULOS
 // ========================================
 
-const vehicles = [
-    {
-        name: "Ford Ranger",
-        plate: "ABC-1234",
-        year: "2024",
-        type: "Picape",
-        status: "Operacional"
-    },
-    {
-        name: "Fiat Ducato",
-        plate: "DEF-5678",
-        year: "2023",
-        type: "Van",
-        status: "Em manutenção"
-    },
-    {
-        name: "Toyota Corolla",
-        plate: "GHI-9012",
-        year: "2022",
-        type: "Sedan",
-        status: "Operacional"
-    },
-    {
-        name: "Mercedes Sprinter",
-        plate: "JKL-3456",
-        year: "2021",
-        type: "Utilitário",
-        status: "Inativo"
+let vehicles = [];
+
+async function loadVehicles() {
+
+    try {
+
+        const response = await fetch("http://localhost:3000/api/veiculos");
+
+        if (!response.ok) {
+            throw new Error("Erro ao buscar veículos.");
+        }
+
+        const data = await response.json();
+
+        vehicles = data.map((vehicle) => ({
+            id: vehicle.id,
+            name: `${vehicle.marca} ${vehicle.modelo}`,
+            plate: vehicle.placa,
+            year: vehicle.ano,
+            type: vehicle.tipo,
+            status: vehicle.status
+        }));
+
+    } catch (error) {
+
+        console.error("Erro ao carregar veículos:", error);
+
     }
-];
+
+}
 
 // ========================================
 // RENDERIZAR VEÍCULOS
@@ -732,4 +732,8 @@ navLinks.forEach((link) => {
         pageContent.innerHTML = "";
 
     });
+});
+
+loadVehicles().then(() => {
+    updateDashboardStats();
 });
