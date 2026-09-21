@@ -260,17 +260,31 @@ function openAddVehicleForm() {
 
                 <div class="vehicle-form-group">
 
-                    <label for="vehicle-name">
-                        Veículo
+                    <label for="vehicle-brand">
+                        Marca
                     </label>
 
                     <input
                         type="text"
-                        id="vehicle-name"
-                        placeholder="Ex.: Ford Ranger"
+                        id="vehicle-brand"
+                        placeholder="Ex.: Ford"
                         required
                     >
 
+                </div>
+
+                <div class="vehicle-form-group">
+
+                    <label for="vehicle-model">
+                        Modelo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="vehicle-model"
+                        placeholder="Ex.: Ranger"
+                        required
+                    >
                 </div>
 
                 <div class="vehicle-form-group">
@@ -380,31 +394,63 @@ function openAddVehicleForm() {
 
     const vehicleForm = document.querySelector("#add-vehicle-form");
 
-    vehicleForm.addEventListener("submit", (event) => {
+    vehicleForm.addEventListener("submit", async (event) => {
 
         event.preventDefault();
 
-        const name = document.querySelector("#vehicle-name").value;
-        const plate = document.querySelector("#vehicle-plate").value;
-        const year = document.querySelector("#vehicle-year").value;
-        const type = document.querySelector("#vehicle-type").value;
+        const marca = document.querySelector("#vehicle-brand").value;
+        const modelo = document.querySelector("#vehicle-model").value;
+        const placa = document.querySelector("#vehicle-plate").value;
+        const ano = document.querySelector("#vehicle-year").value;
+        const tipo = document.querySelector("#vehicle-type").value;
         const status = document.querySelector("#vehicle-status").value;
 
+        try {
+
+            const response = await fetch("http://localhost:3000/api/veiculos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            body: JSON.stringify({
+                marca: marca,
+                modelo: modelo,
+                placa: placa,
+                ano: Number(ano),
+                tipo: tipo,
+                status: status
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro ao cadastrar veículo.");
+        }
+
+        const newVehicle = await response.json();
+
         vehicles.push({
-            name: name,
-            plate: plate,
-            year: year,
-            type: type,
-            status: status
+            id: newVehicle.id,
+            name: `${newVehicle.marca} ${newVehicle.modelo}`,
+            plate: newVehicle.placa,
+            year: newVehicle.ano,
+            type: newVehicle.tipo,
+            status: newVehicle.status
         });
 
         renderVehicles();
         updateVehiclesSummary();
         updateDashboardStats();
-        
+
         modal.remove();
 
-    });
+    } catch (error) {
+
+        console.error("Erro ao cadastrar veículo:", error);
+        alert("Não foi possível cadastrar o veículo.");
+
+    }
+
+});
 
     closeModal.addEventListener("click", () => modal.remove());
     cancelModal.addEventListener("click", () => modal.remove());
