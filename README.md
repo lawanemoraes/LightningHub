@@ -37,15 +37,15 @@ A proposta é transformar o LightningHub em um projeto cada vez mais completo ao
 
 O projeto já possui a estrutura inicial do sistema, banco de dados PostgreSQL, back-end com Node.js e Express e integração entre o front-end e a API.
 
-Atualmente, o módulo de **veículos** já possui integração funcional com o banco de dados, permitindo consultar e cadastrar veículos através da API.
+Atualmente, o módulo de **veículos** possui funcionalidades de cadastro, consulta, edição, busca, filtro por status, ordenação e visualização de detalhes, com persistência dos dados no PostgreSQL.
 
 ### Atualmente trabalhando em:
 
-* Evolução do módulo de veículos
-* Desenvolvimento dos próximos módulos do sistema
-* Integração entre front-end, API e banco de dados
-* Implementação de novas funcionalidades
-* Melhorias na estrutura e organização do projeto
+* Melhorias e novas funcionalidades no módulo de veículos;
+* Desenvolvimento dos próximos módulos do sistema;
+* Integração entre front-end, API e banco de dados;
+* Implementação de validações e tratamento de erros;
+* Melhorias na estrutura e organização do projeto.
 
 ---
 
@@ -111,15 +111,18 @@ O front-end realiza requisições para a API, que é responsável por processar 
 ### Veículos
 
 * [x] Cadastro de veículos
-* [ ] Edição de veículos
+* [x] Edição de veículos
 * [x] Visualização de veículos
 * [x] Busca de veículos
 * [x] Filtro por status
+* [x] Ordenação de veículos por nome
+* [x] Mensagem para busca sem resultados
 * [x] Visualização de detalhes
 * [x] Fechamento dos detalhes
 * [x] Controle de status
 * [x] Consulta de veículos através da API
 * [x] Cadastro de veículos através da API
+* [x] Atualização de veículos através da API
 * [x] Persistência dos dados no PostgreSQL
 
 ### Motoristas
@@ -200,6 +203,12 @@ Retorna os veículos cadastrados no banco de dados.
 
 Recebe os dados do veículo em formato JSON e realiza o cadastro no PostgreSQL.
 
+#### Atualizar veículo
+
+    PUT /api/veiculos/:id
+
+Atualiza os dados de um veículo existente a partir do seu identificador.
+
 ---
 
 ## 📁 Estrutura do projeto
@@ -232,16 +241,15 @@ O arquivo `.env` contém as configurações locais de acesso ao banco de dados e
 
 ## 🗺️ Próximos passos
 
-1. Implementar edição de veículos;
-2. Finalizar as funcionalidades do módulo de veículos;
-3. Desenvolver o módulo de motoristas;
-4. Desenvolver o módulo de manutenções;
-5. Desenvolver o módulo de documentos;
-6. Implementar validações e melhorias na API;
-7. Implementar autenticação e controle de acesso;
-8. Desenvolver relatórios e indicadores;
-9. Realizar testes e melhorias gerais;
-10. Continuar evoluindo a arquitetura e as funcionalidades do sistema.
+1. Finalizar as funcionalidades do módulo de veículos;
+2. Desenvolver o módulo de motoristas;
+3. Desenvolver o módulo de manutenções;
+4. Desenvolver o módulo de documentos;
+5. Implementar validações e melhorias na API;
+6. Implementar autenticação e controle de acesso;
+7. Desenvolver relatórios e indicadores;
+8. Realizar testes e melhorias gerais;
+9. Continuar evoluindo a arquitetura e as funcionalidades do sistema.
 
 ---
 
