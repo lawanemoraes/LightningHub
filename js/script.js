@@ -79,7 +79,7 @@ function renderVehicles() {
 
         </div>
 
-        ${vehicles.map((vehicle, index) => `
+       ${vehicles.map((vehicle, index) => `
 
             <div class="vehicle-table-row">
 
@@ -127,6 +127,7 @@ function renderVehicles() {
             </div>
 
         `).join("")}
+
     `;
 
 
@@ -969,6 +970,8 @@ navLinks.forEach((link) => {
 
                 const vehicleRows = document.querySelectorAll(".vehicle-table-row");
 
+                let visibleVehicles = 0;
+
                 vehicleRows.forEach((row) => {
 
                     const vehicleName = row
@@ -1007,11 +1010,34 @@ navLinks.forEach((link) => {
 
                     if (matchesSearch && matchesStatus) {
                         row.style.display = "grid";
+                        visibleVehicles++;
                     } else {
                         row.style.display = "none";
                     }
 
                 });
+
+                const vehicleTable = document.querySelector(".vehicles-table");
+
+                let emptyMessage = document.querySelector(".vehicle-empty");
+
+                if (visibleVehicles === 0) {
+                    if (!emptyMessage) {
+                        emptyMessage = document.createElement("div");
+                        emptyMessage.classList.add("vehicle-empty");
+                        emptyMessage.innerHTML = `
+                            <p>
+                                Nenhum veículo encontrado.
+                            </p>
+                        `;
+                        vehicleTable.appendChild(emptyMessage);
+                    }
+                } else {
+                    if (emptyMessage) {
+                        emptyMessage.remove();
+                    }
+
+}
 
             }
 
