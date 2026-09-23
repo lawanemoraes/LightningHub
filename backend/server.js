@@ -15,7 +15,9 @@ app.get("/", (req, res) => {
 
 app.get("/api/veiculos", async (req, res) => {
     try {
-        const result = await pool.query("SELECT * FROM veiculos");
+        const result = await pool.query(
+            "SELECT * FROM veiculos ORDER BY id"
+        );
         res.json(result.rows);
     } catch (error) {
         console.error("Erro ao buscar veículos:", error.message);
