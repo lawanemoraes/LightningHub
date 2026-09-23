@@ -38,10 +38,8 @@ body {
     min-height: 100vh;
     background-color: #0f172a;
     border-right: 1px solid #1e293b;
-
     display: flex;
     flex-direction: column;
-
     padding: 24px 16px;
 }
 
@@ -52,21 +50,17 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-
     padding: 8px 10px 28px;
 }
 
 .brand-icon {
     width: 42px;
     height: 42px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: #2563eb;
     border-radius: 10px;
-
     font-size: 22px;
 }
 
@@ -77,9 +71,7 @@ body {
 
 .brand span {
     display: block;
-
     margin-top: 3px;
-
     font-size: 11px;
     color: #64748b;
 }
@@ -95,12 +87,9 @@ body {
 
 .nav-title {
     margin: 0 10px 10px;
-
     font-size: 10px;
     font-weight: bold;
-
     letter-spacing: 1.5px;
-
     color: #475569;
 }
 
@@ -108,22 +97,16 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-
     padding: 11px 12px;
-
     border-radius: 8px;
-
     color: #94a3b8;
     text-decoration: none;
-
     font-size: 14px;
-
     transition: 0.2s;
 }
 
 .nav-link span {
     width: 20px;
-
     text-align: center;
 }
 
@@ -142,13 +125,10 @@ body {
 
 .sidebar-status {
     margin-top: auto;
-
     display: flex;
     align-items: center;
     gap: 10px;
-
     padding: 14px 12px;
-
     background-color: #111c33;
     border: 1px solid #1e293b;
     border-radius: 10px;
@@ -157,24 +137,19 @@ body {
 .status-dot {
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
     background-color: #22c55e;
 }
 
 .sidebar-status strong {
     display: block;
-
     font-size: 12px;
     color: #e2e8f0;
 }
 
 .sidebar-status small {
     display: block;
-
     margin-top: 3px;
-
     font-size: 10px;
     color: #64748b;
 }
@@ -186,9 +161,7 @@ body {
 .main-content {
     flex: 1;
     min-width: 0;
-
     padding: 28px 32px;
-
     background-color: #0b1120;
 }
 
@@ -201,7 +174,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     margin-bottom: 32px;
 }
 
@@ -210,9 +182,7 @@ body {
 
 .page-title .breadcrumb {
     display: block;
-
     margin-bottom: 6px;
-
     font-size: 12px;
     color: #64748b;
 }
@@ -237,16 +207,11 @@ body {
 .icon-button {
     width: 38px;
     height: 38px;
-
     border: 1px solid #1e293b;
     border-radius: 8px;
-
     background-color: #111827;
-
     color: #94a3b8;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
 
@@ -267,33 +232,25 @@ body {
 .avatar {
     width: 38px;
     height: 38px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background-color: #1d4ed8;
-
     color: #ffffff;
-
     font-size: 12px;
     font-weight: bold;
 }
 
 .profile-info strong {
     display: block;
-
     font-size: 13px;
     color: #e2e8f0;
 }
 
 .profile-info span {
     display: block;
-
     margin-top: 3px;
-
     font-size: 11px;
     color: #64748b;
 }
@@ -306,34 +263,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     margin-bottom: 28px;
     padding: 24px;
-
     background: linear-gradient(
         135deg,
         #111c33,
         #0f172a
     );
-
     border: 1px solid #1e293b;
     border-radius: 12px;
 }
 
 .eyebrow {
     margin-bottom: 6px;
-
     font-size: 10px;
     font-weight: bold;
-
     letter-spacing: 1.5px;
-
     color: #60a5fa;
 }
 
 .welcome h3 {
     margin-bottom: 6px;
-
     font-size: 22px;
     color: #f8fafc;
 }
@@ -348,19 +298,13 @@ body {
 
 .primary-button {
     padding: 11px 18px;
-
     border: none;
     border-radius: 8px;
-
     background-color: #2563eb;
-
     color: #ffffff;
-
     font-size: 13px;
     font-weight: bold;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
 
@@ -376,33 +320,24 @@ body {
 
 .stats-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 16px;
-
     margin-bottom: 24px;
 }
 
 .stat-card {
     display: flex;
     align-items: center;
-
     gap: 14px;
-
     padding: 20px;
-
     background-color: #111827;
-
     border: 1px solid #1e293b;
     border-radius: 12px;
-
     transition: 0.2s;
 }
 
 .stat-card:hover {
     border-color: #2563eb;
-
     transform: translateY(-2px);
 }
 
@@ -412,17 +347,12 @@ body {
 .stat-icon {
     width: 42px;
     height: 42px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border-radius: 10px;
-
     background-color: #172554;
-
     font-size: 19px;
 }
 
@@ -431,28 +361,21 @@ body {
 
 .stat-content span {
     display: block;
-
     margin-bottom: 5px;
-
     font-size: 11px;
     color: #64748b;
 }
 
 .stat-content strong {
     display: block;
-
     font-size: 24px;
-
     color: #f8fafc;
 }
 
 .stat-content small {
     display: block;
-
     margin-top: 3px;
-
     font-size: 10px;
-
     color: #60a5fa;
 }
 
@@ -462,11 +385,8 @@ body {
 
 .dashboard-grid {
     display: grid;
-
     grid-template-columns: 1.4fr 1fr;
-
     gap: 20px;
-
     margin-bottom: 24px;
 }
 
@@ -477,10 +397,8 @@ body {
 
 .panel {
     background-color: #111827;
-
     border: 1px solid #1e293b;
     border-radius: 12px;
-
     padding: 22px;
 }
 
@@ -491,7 +409,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     margin-bottom: 20px;
 }
 
@@ -502,9 +419,7 @@ body {
 
 .panel-header a {
     font-size: 11px;
-
     color: #60a5fa;
-
     text-decoration: none;
 }
 
@@ -526,9 +441,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 14px 0;
-
     border-bottom: 1px solid #1e293b;
 }
 
@@ -549,33 +462,24 @@ body {
 .vehicle-icon {
     width: 38px;
     height: 38px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: #172554;
-
     border-radius: 8px;
-
     font-size: 17px;
 }
 
 .vehicle-info strong {
     display: block;
-
     font-size: 13px;
-
     color: #e2e8f0;
 }
 
 .vehicle-info span {
     display: block;
-
     margin-top: 3px;
-
     font-size: 10px;
-
     color: #64748b;
 }
 
@@ -584,9 +488,7 @@ body {
 
 .badge {
     padding: 5px 9px;
-
     border-radius: 20px;
-
     font-size: 9px;
     font-weight: bold;
 }
@@ -620,9 +522,7 @@ body {
     display: flex;
     align-items: center;
     gap: 14px;
-
     padding: 14px 0;
-
     border-bottom: 1px solid #1e293b;
 }
 
@@ -637,14 +537,11 @@ body {
 .maintenance-date {
     width: 44px;
     height: 44px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     background-color: #172554;
-
     border-radius: 8px;
 }
 
@@ -655,10 +552,8 @@ body {
 
 .maintenance-date span {
     margin-top: 2px;
-
     font-size: 8px;
     font-weight: bold;
-
     color: #60a5fa;
 }
 
@@ -667,19 +562,14 @@ body {
 
 .maintenance-item > div:last-child strong {
     display: block;
-
     font-size: 12px;
-
     color: #e2e8f0;
 }
 
 .maintenance-item > div:last-child span {
     display: block;
-
     margin-top: 4px;
-
     font-size: 10px;
-
     color: #64748b;
 }
 
@@ -705,11 +595,8 @@ body {
 .activity-item {
     display: flex;
     align-items: center;
-
     gap: 12px;
-
     padding: 14px 0;
-
     border-bottom: 1px solid #1e293b;
 }
 
@@ -724,19 +611,13 @@ body {
 .activity-icon {
     width: 36px;
     height: 36px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border-radius: 8px;
-
     background-color: #172554;
-
     color: #60a5fa;
-
     font-size: 14px;
     font-weight: bold;
 }
@@ -750,19 +631,14 @@ body {
 
 .activity-content strong {
     display: block;
-
     font-size: 12px;
-
     color: #e2e8f0;
 }
 
 .activity-content span {
     display: block;
-
     margin-top: 4px;
-
     font-size: 10px;
-
     color: #64748b;
 }
 
@@ -771,9 +647,7 @@ body {
 
 .activity-item time {
     font-size: 10px;
-
     color: #475569;
-
     white-space: nowrap;
 }
 
@@ -786,11 +660,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 18px 4px 4px;
-
     font-size: 10px;
-
     color: #475569;
 }
 
@@ -843,7 +714,6 @@ body {
     .sidebar {
         width: 100%;
         min-height: auto;
-
         padding: 16px;
     }
 
@@ -853,9 +723,7 @@ body {
 
     .navigation {
         display: grid;
-
         grid-template-columns: repeat(3, 1fr);
-
         gap: 6px;
     }
 
@@ -865,9 +733,7 @@ body {
 
     .nav-link {
         justify-content: center;
-
         padding: 10px 6px;
-
         font-size: 11px;
     }
 
@@ -915,9 +781,7 @@ body {
     .welcome {
         flex-direction: column;
         align-items: flex-start;
-
         gap: 18px;
-
         padding: 20px;
     }
 
@@ -955,9 +819,7 @@ body {
 
     .footer {
         flex-direction: column;
-
         gap: 8px;
-
         text-align: center;
     }
 
@@ -978,13 +840,11 @@ body {
 
     .nav-link span {
         display: inline;
-
         width: 18px;
     }
 
     .vehicle-row {
         align-items: flex-start;
-
         gap: 10px;
     }
 
@@ -1012,36 +872,27 @@ body {
 .vehicles-summary {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
     gap: 14px;
-
     margin-bottom: 22px;
 }
 
 .vehicle-summary-card {
     padding: 16px;
-
     background-color: #0f172a;
-
     border: 1px solid #1e293b;
     border-radius: 10px;
 }
 
 .vehicle-summary-card span {
     display: block;
-
     margin-bottom: 6px;
-
     font-size: 11px;
-
     color: #64748b;
 }
 
 .vehicle-summary-card strong {
     display: block;
-
     font-size: 22px;
-
     color: #f8fafc;
 }
 
@@ -1052,36 +903,28 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-
     margin-bottom: 18px;
 }
 
 .vehicle-search,
 .vehicle-filter {
     height: 38px;
-
     border: 1px solid #1e293b;
     border-radius: 8px;
-
     background-color: #0f172a;
-
     color: #e2e8f0;
-
     font-family: Arial, sans-serif;
     font-size: 12px;
-
     outline: none;
 }
 
 .vehicle-search {
     flex: 1;
-
     padding: 0 12px;
 }
 
 .vehicle-filter {
     padding: 0 12px;
-
     cursor: pointer;
 }
 
@@ -1100,46 +943,33 @@ body {
 .vehicles-table {
     border: 1px solid #1e293b;
     border-radius: 10px;
-
     overflow: hidden;
 }
 
 .vehicle-table-header,
 .vehicle-table-row {
     display: grid;
-
     grid-template-columns: 2fr 1fr 1fr 1.2fr 60px;
-
     align-items: center;
-
     gap: 16px;
-
     padding: 14px 16px;
 }
 
 .vehicle-table-header {
     background-color: #0f172a;
-
     border-bottom: 1px solid #1e293b;
-
     font-size: 10px;
     font-weight: bold;
-
     letter-spacing: 0.5px;
-
     color: #64748b;
     text-transform: uppercase;
 }
 
 .vehicle-table-row {
     min-height: 68px;
-
     background-color: #111827;
-
     border-bottom: 1px solid #1e293b;
-
     font-size: 11px;
-
     color: #94a3b8;
 }
 
@@ -1153,25 +983,19 @@ body {
 .vehicle-table-name {
     display: flex;
     align-items: center;
-
     gap: 10px;
 }
 
 .vehicle-table-name strong {
     display: block;
-
     font-size: 12px;
-
     color: #e2e8f0;
 }
 
 .vehicle-table-name span {
     display: block;
-
     margin-top: 3px;
-
     font-size: 10px;
-
     color: #64748b;
 }
 
@@ -1180,24 +1004,17 @@ body {
 
 .table-action {
     padding: 6px 10px;
-
     border: 1px solid #1e3a8a;
     border-radius: 6px;
-
     background-color: #172554;
-
     color: #60a5fa;
-
     font-size: 10px;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
 
 .table-action:hover {
     background-color: #1d4ed8;
-
     color: #ffffff;
 }
 
@@ -1207,11 +1024,8 @@ body {
 
 .vehicle-details {
     margin-top: 22px;
-
     padding: 20px;
-
     background-color: #0f172a;
-
     border: 1px solid #1e293b;
     border-radius: 10px;
 }
@@ -1220,25 +1034,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding-bottom: 16px;
-
     border-bottom: 1px solid #1e293b;
 }
 
 .vehicle-details-header h3 {
     margin-top: 4px;
-
     font-size: 16px;
-
     color: #f8fafc;
 }
 
 .vehicle-details-content {
     padding-top: 18px;
-
     font-size: 12px;
-
     color: #94a3b8;
 }
 
@@ -1434,4 +1242,329 @@ body {
     margin-top: 30px;
     padding: 0;
     border: none;
+}
+
+/* ========================================
+   PÁGINA DE MOTORISTAS
+   ======================================== */
+
+.drivers-page {
+    margin-bottom: 24px;
+}
+
+
+/* TABELA */
+
+.drivers-table {
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.driver-table-header,
+.driver-table-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 0.8fr 1.2fr 0.9fr 70px;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+}
+
+.driver-table-header {
+    background-color: #0f172a;
+    border-bottom: 1px solid #1e293b;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.driver-table-row {
+    min-height: 68px;
+    background-color: #111827;
+    border-bottom: 1px solid #1e293b;
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.driver-table-row:last-child {
+    border-bottom: none;
+}
+
+
+/* NOME DO MOTORISTA */
+
+.driver-table-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.driver-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #172554;
+    border-radius: 8px;
+    font-size: 17px;
+}
+
+.driver-table-name strong {
+    display: block;
+    font-size: 12px;
+    color: #e2e8f0;
+}
+
+.driver-table-name span {
+    display: block;
+    margin-top: 3px;
+    font-size: 10px;
+    color: #64748b;
+}
+
+
+/* AÇÕES */
+
+.driver-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ========================================
+   DETALHES DO MOTORISTA
+   ======================================== */
+
+.driver-details {
+    margin-top: 22px;
+    padding: 20px;
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+}
+
+.driver-details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.driver-details-header h3 {
+    margin-top: 4px;
+    font-size: 16px;
+    color: #f8fafc;
+}
+
+.driver-details-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding-top: 18px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.driver-details-content strong {
+    color: #e2e8f0;
+}
+
+ /* ========================================
+    MODAL DE MOTORISTA
+ ======================================== */
+
+.driver-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.driver-modal-content {
+    width: 100%;
+    max-width: 680px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    background: #0f172a;
+    border: 1px solid #263449;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+}
+
+.driver-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+    padding: 0;
+}
+
+.driver-modal-header h3 {
+    margin: 0;
+    font-size: 22px;
+    color: #f8fafc;
+}
+
+
+/* FORMULÁRIO */
+
+#add-driver-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+}
+
+.driver-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+#add-driver-form .driver-form-group:first-child {
+    grid-column: 1 / -1;
+}
+
+.driver-form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+.driver-form-group input,
+.driver-form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    background: #111827;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+
+/* SELECTS */
+
+.driver-form-group select {
+    appearance: auto;
+    cursor: pointer;
+    padding-right: 36px;
+}
+
+
+/* DATA */
+
+.driver-form-group input[type="date"] {
+    cursor: pointer;
+    color-scheme: dark;
+}
+
+.driver-form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+}
+
+
+/* PLACEHOLDER */
+
+.driver-form-group input::placeholder {
+    color: #64748b;
+}
+
+
+/* FOCO */
+
+.driver-form-group input:focus,
+.driver-form-group select:focus {
+    outline: none;
+    border-color: #22d3ee;
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.08);
+}
+
+
+/* AÇÕES */
+
+.driver-form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 0;
+}
+
+
+/* FORMULÁRIO DO MODAL */
+
+.driver-modal-content form {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* ========================================
+   RESPONSIVIDADE DO MODAL DE MOTORISTA
+======================================== */
+
+@media (max-width: 700px) {
+
+    #add-driver-form {
+        grid-template-columns: 1fr;
+    }
+
+    #add-driver-form .driver-form-group:first-child {
+        grid-column: auto;
+    }
+
+    .driver-form-actions {
+        grid-column: auto;
+    }
+}
+
+/* ========================================
+   BUSCA DE MOTORISTAS
+======================================== */
+
+.driver-search {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.driver-search input {
+    width: 100%;
+    padding: 11px 14px;
+    background-color: #111827;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.driver-search input::placeholder {
+    color: #64748b;
+}
+
+.driver-search input:focus {
+    outline: none;
+    border-color: #22d3ee;
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.08);
 }

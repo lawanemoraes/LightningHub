@@ -19,6 +19,7 @@ const dashboardElements = document.querySelectorAll(
     ".welcome, .stats-grid, .dashboard-grid, .activity-panel, .footer"
 );
 
+
 // ========================================
 // DADOS DOS VEÍCULOS
 // ========================================
@@ -55,6 +56,240 @@ async function loadVehicles() {
     }
 
 }
+
+
+// ========================================
+// DADOS DOS MOTORISTAS
+// ========================================
+
+let drivers = [];
+
+async function loadDrivers() {
+
+    try {
+
+        const response = await fetch("http://localhost:3000/api/motoristas");
+
+        if (!response.ok) {
+            throw new Error("Erro ao buscar motoristas.");
+        }
+
+        const data = await response.json();
+
+        drivers = data.map((driver) => ({
+            id: driver.id,
+            name: driver.nome,
+            cpf: driver.cpf,
+            cnh: driver.cnh,
+            category: driver.categoria_cnh,
+            licenseExpiration: driver.validade_cnh,
+            phone: driver.telefone,
+            status: driver.status
+        }));
+
+    } catch (error) {
+
+        console.error("Erro ao carregar motoristas:", error);
+
+    }
+
+}
+
+
+// ========================================
+// FILTRAR MOTORISTAS
+// ========================================
+
+function filterDrivers(searchTerm) {
+
+    const term = searchTerm
+        .toLowerCase()
+        .trim();
+
+    if (!term) {
+        return [...drivers];
+    }
+
+    return drivers.filter((driver) =>
+        driver.name.toLowerCase().includes(term) ||
+        driver.cpf.includes(term) ||
+        driver.cnh.includes(term)
+    );
+}
+
+
+// ========================================
+// RENDERIZAR MOTORISTAS
+// ========================================
+
+function renderDrivers() {
+
+    const driverTable = document.querySelector(".drivers-table");
+
+    if (!driverTable) {
+        return;
+    }
+
+    const searchInput = document.querySelector("#driver-search-input");
+
+    const searchTerm = searchInput
+        ? searchInput.value
+        : "";
+
+    const sortedDrivers = filterDrivers(searchTerm).sort((a, b) =>
+        a.name.localeCompare(b.name, "pt-BR")
+    );
+
+    driverTable.innerHTML = `
+        <div class="driver-table-header">
+
+            <span>Motorista</span>
+            <span>CNH</span>
+            <span>Categoria</span>
+            <span>Telefone</span>
+            <span>Status</span>
+            <span>Ações</span>
+
+        </div>
+
+        ${sortedDrivers.map((driver) => `
+
+            <div class="driver-table-row">
+
+                <div class="driver-table-name">
+
+                    <div class="driver-icon">
+                        👤
+                    </div>
+
+                    <div>
+                        <strong>${driver.name}</strong>
+                        <span>CPF: ${driver.cpf}</span>
+                    </div>
+
+                </div>
+
+                <span>${driver.cnh}</span>
+
+                <span>${driver.category}</span>
+
+                <span>${driver.phone}</span>
+
+                <span class="badge ${
+                    driver.status === "Ativo"
+                        ? "operational"
+                        : "inactive"
+                }">
+                    ${driver.status}
+                </span>
+
+                <div class="driver-actions">
+
+                    <button
+                        class="table-action"
+                        data-id="${driver.id}"
+                        type="button"
+                    >
+                        Ver
+                    </button>
+
+                </div>
+
+            </div>
+
+        `).join("")}
+
+    `;
+
+    const driverButtons = driverTable.querySelectorAll(".table-action");
+
+    driverButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const driverId = Number(button.dataset.id);
+
+            showDriverDetails(driverId);
+
+        });
+
+    });
+
+}
+
+function showDriverDetails(driverId) {
+
+    const driver = drivers.find((item) => item.id === driverId);
+
+    if (!driver) {
+        return;
+    }
+
+    const driverTable = document.querySelector(".drivers-table");
+
+    if (!driverTable) {
+        return;
+    }
+
+    const existingDetails = document.querySelector(".driver-details");
+
+    if (existingDetails) {
+        existingDetails.remove();
+    }
+
+    const details = document.createElement("div");
+
+    details.className = "driver-details";
+
+    details.innerHTML = `
+        <div class="driver-details-header">
+
+            <div>
+                <p class="eyebrow">
+                    MOTORISTA
+                </p>
+
+                <h3>
+                    ${driver.name}
+                </h3>
+            </div>
+
+            <button
+                class="table-action"
+                id="close-driver-details"
+                type="button"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+        <div class="driver-details-content">
+
+            <p><strong>CPF:</strong> ${driver.cpf}</p>
+
+            <p><strong>CNH:</strong> ${driver.cnh}</p>
+
+            <p><strong>Categoria:</strong> ${driver.category}</p>
+
+            <p><strong>Validade da CNH:</strong> ${driver.licenseExpiration}</p>
+
+            <p><strong>Telefone:</strong> ${driver.phone}</p>
+
+            <p><strong>Status:</strong> ${driver.status}</p>
+
+        </div>
+    `;
+
+    driverTable.parentElement.appendChild(details);
+
+    const closeButton = document.querySelector("#close-driver-details");
+
+    closeButton.addEventListener("click", () => {
+        details.remove();
+    });
+}
+
 
 // ========================================
 // RENDERIZAR VEÍCULOS
@@ -139,26 +374,15 @@ function renderVehicles() {
     // BOTÕES "VER"
     // ========================================
 
-    const vehicleButtons = vehicleTable.querySelectorAll(".table-action");
-
-    const vehicleDetailsTitle = document.querySelector("#vehicle-details-title");
-    const vehicleDetailsContent = document.querySelector(".vehicle-details-content");
+    const vehicleButtons = vehicleTable.querySelectorAll(".table-action:not(.edit-vehicle-button)");
 
     vehicleButtons.forEach((button) => {
 
         button.addEventListener("click", () => {
 
-            const id = Number(button.dataset.id);
-            const vehicle = vehicles.find((item) => item.id === id);
+            const vehicleId = Number(button.dataset.id);
 
-            vehicleDetailsTitle.textContent = vehicle.name;
-
-            vehicleDetailsContent.innerHTML = `
-                <p><strong>Placa:</strong> ${vehicle.plate}</p>
-                <p><strong>Ano:</strong> ${vehicle.year}</p>
-                <p><strong>Tipo:</strong> ${vehicle.type}</p>
-                <p><strong>Status:</strong> ${vehicle.status}</p>
-            `;
+            showVehicleDetails(vehicleId);
 
         });
 
@@ -175,6 +399,80 @@ function renderVehicles() {
         });
     });
 
+}
+
+
+// ========================================
+// DETALHES DO VEÍCULO
+// ========================================
+
+function showVehicleDetails(vehicleId) {
+
+    const vehicle = vehicles.find((item) => item.id === vehicleId);
+
+    if (!vehicle) {
+        return;
+    }
+
+    const vehicleTable = document.querySelector(".vehicles-table");
+
+    if (!vehicleTable) {
+        return;
+    }
+
+    const existingDetails = document.querySelector(".vehicle-details");
+
+    if (existingDetails) {
+        existingDetails.remove();
+    }
+
+    const details = document.createElement("div");
+
+    details.className = "vehicle-details";
+
+    details.innerHTML = `
+        <div class="vehicle-details-header">
+
+            <div>
+                <p class="eyebrow">
+                    VEÍCULO
+                </p>
+
+                <h3>
+                    ${vehicle.name}
+                </h3>
+            </div>
+
+            <button
+                class="table-action"
+                id="close-vehicle-details"
+                type="button"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+        <div class="vehicle-details-content">
+
+            <p><strong>Placa:</strong> ${vehicle.plate}</p>
+
+            <p><strong>Ano:</strong> ${vehicle.year}</p>
+
+            <p><strong>Tipo:</strong> ${vehicle.type}</p>
+
+            <p><strong>Status:</strong> ${vehicle.status}</p>
+
+        </div>
+    `;
+
+    vehicleTable.parentElement.appendChild(details);
+
+    const closeButton = document.querySelector("#close-vehicle-details");
+
+    closeButton.addEventListener("click", () => {
+        details.remove();
+    });
 }
 
 
@@ -244,6 +542,22 @@ function updateDashboardStats() {
 }
 
 updateDashboardStats();
+
+
+// ========================================
+// ATUALIZAR ESTATÍSTICAS DOS MOTORISTAS
+// ========================================
+
+function updateDriversStats() {
+
+    const dashboardTotalDrivers = document.querySelector("#dashboard-total-drivers");
+
+    if (!dashboardTotalDrivers) {
+        return;
+    }
+
+    dashboardTotalDrivers.textContent = drivers.length;
+}
 
 
 // ========================================
@@ -739,6 +1053,275 @@ dashboardAddVehicleButton.addEventListener("click", openAddVehicleForm);
 
 
 // ========================================
+// ABRIR FORMULÁRIO DE MOTORISTA - CADASTRO
+// ========================================
+
+function openAddDriverForm() {
+
+    const existingModal = document.querySelector(".driver-modal");
+
+    if (existingModal) {
+        return;
+    }
+
+    const modal = document.createElement("div");
+
+    modal.classList.add("driver-modal");
+
+    modal.innerHTML = `
+
+        <div class="driver-modal-content">
+
+            <div class="driver-modal-header">
+
+                <div>
+
+                    <h3>
+                        Novo motorista
+                    </h3>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="table-action"
+                    id="close-driver-modal"
+                >
+                    Fechar
+                </button>
+
+            </div>
+
+            <form id="add-driver-form">
+
+                <div class="driver-form-group">
+
+                    <label for="driver-name">
+                        Nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driver-name"
+                        placeholder="Ex.: João da Silva"
+                        required
+                    >
+
+                </div>
+
+                <div class="driver-form-group">
+
+                    <label for="driver-cpf">
+                        CPF
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driver-cpf"
+                        placeholder="Ex.: 12345678901"
+                        maxlength="11"
+                        required
+                    >
+
+                </div>
+
+                <div class="driver-form-group">
+
+                    <label for="driver-cnh">
+                        CNH
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driver-cnh"
+                        placeholder="Ex.: 98765432100"
+                        maxlength="11"
+                        required
+                    >
+
+                </div>
+
+                <div class="driver-form-group">
+
+                    <label for="driver-category">
+                        Categoria CNH
+                    </label>
+
+                    <select
+                        id="driver-category"
+                        required
+                    >
+
+                        <option value="" disabled selected>
+                            Selecione a categoria
+                        </option>
+
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="AB">AB</option>
+                        <option value="AC">AC</option>
+                        <option value="AD">AD</option>
+                        <option value="AE">AE</option>
+
+                    </select>
+
+                </div>
+
+                <div class="driver-form-group">
+
+                    <label for="driver-license-expiration">
+                        Validade da CNH
+                    </label>
+
+                    <input
+                        type="date"
+                        id="driver-license-expiration"
+                        required
+                    >
+
+                </div>
+
+                <div class="driver-form-group">
+
+                    <label for="driver-phone">
+                        Telefone
+                    </label>
+
+                    <input
+                        type="text"
+                        id="driver-phone"
+                        placeholder="Ex.: 15999999999"
+                        maxlength="15"
+                        required
+                    >
+
+                </div>
+
+                <div class="driver-form-group">
+
+                    <label for="driver-status">
+                        Status
+                    </label>
+
+                    <select
+                        id="driver-status"
+                        required
+                    >
+
+                        <option value="Ativo">
+                            Ativo
+                        </option>
+
+                        <option value="Inativo">
+                            Inativo
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="driver-form-actions">
+
+                    <button
+                        type="button"
+                        class="table-action"
+                        id="cancel-driver-modal"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Adicionar motorista
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(modal);
+
+    const closeModal = document.querySelector("#close-driver-modal");
+    const cancelModal = document.querySelector("#cancel-driver-modal");
+    const driverForm = modal.querySelector("#add-driver-form");
+
+    closeModal.addEventListener("click", () => modal.remove());
+    cancelModal.addEventListener("click", () => modal.remove());
+
+    driverForm.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+        const nome = modal.querySelector("#driver-name").value;
+        const cpf = modal.querySelector("#driver-cpf").value;
+        const cnh = modal.querySelector("#driver-cnh").value;
+        const categoria_cnh = modal.querySelector("#driver-category").value;
+        const validade_cnh = modal.querySelector("#driver-license-expiration").value;
+        const telefone = modal.querySelector("#driver-phone").value;
+        const status = modal.querySelector("#driver-status").value;
+
+        try {
+
+            const response = await fetch("http://localhost:3000/api/motoristas", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome: nome,
+                    cpf: cpf,
+                    cnh: cnh,
+                    categoria_cnh: categoria_cnh,
+                    validade_cnh: validade_cnh,
+                    telefone: telefone,
+                    status: status
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao cadastrar motorista.");
+            }
+
+            const newDriver = await response.json();
+
+            drivers.push({
+                id: newDriver.id,
+                name: newDriver.nome,
+                cpf: newDriver.cpf,
+                cnh: newDriver.cnh,
+                category: newDriver.categoria_cnh,
+                licenseExpiration: newDriver.validade_cnh,
+                phone: newDriver.telefone,
+                status: newDriver.status
+            });
+
+            renderDrivers();
+            updateDriversStats();
+            modal.remove();
+
+        } catch (error) {
+
+            console.error("Erro ao cadastrar motorista:", error);
+
+            alert("Não foi possível cadastrar o motorista.");
+
+        }
+
+    });
+
+}
+
+
+// ========================================
 // NAVEGAÇÃO ENTRE PÁGINAS
 // ========================================
 
@@ -900,49 +1483,6 @@ navLinks.forEach((link) => {
 
                     <div class="vehicles-table"></div>
 
-
-                    <!-- DETALHES DO VEÍCULO -->
-
-                    <div
-                        class="vehicle-details"
-                        id="vehicle-details"
-                    >
-
-                        <div class="vehicle-details-header">
-
-                            <div>
-
-                                <p class="eyebrow">
-                                    DETALHES
-                                </p>
-
-                                <h3 id="vehicle-details-title">
-                                    Selecione um veículo
-                                </h3>
-
-                            </div>
-
-
-                            <button
-                                class="table-action"
-                                id="close-details"
-                            >
-                                Fechar
-                            </button>
-
-                        </div>
-
-
-                        <div class="vehicle-details-content">
-
-                            <p>
-                                Clique em "Ver" para visualizar as informações do veículo.
-                            </p>
-
-                        </div>
-
-                    </div>
-
                 </section>
 
             `;
@@ -959,7 +1499,7 @@ navLinks.forEach((link) => {
 
             addVehicleButton.addEventListener("click", openAddVehicleForm);
 
-                        const vehicleSearch = document.querySelector(".vehicle-search");
+            const vehicleSearch = document.querySelector(".vehicle-search");
             const vehicleFilter = document.querySelector(".vehicle-filter");
 
 
@@ -1040,34 +1580,82 @@ navLinks.forEach((link) => {
                     if (emptyMessage) {
                         emptyMessage.remove();
                     }
-
-}
+                }
 
             }
 
             vehicleSearch.addEventListener("input", filterVehicles);
             vehicleFilter.addEventListener("change", filterVehicles);
 
-            const closeDetailsContent = document.querySelector("#close-details");
-
-            closeDetailsContent.addEventListener("click", () => {
-
-                const vehicleDetailsTitle = document.querySelector("#vehicle-details-title");
-                const vehicleDetailsContent = document.querySelector(".vehicle-details-content");
-
-                vehicleDetailsTitle.textContent = "Selecione um veículo";
-
-                vehicleDetailsContent.innerHTML = `
-                    <p>
-                        Clique em "Ver" para visualizar as informações do veículo.
-                    </p>
-                `;
-
-            });
-
             return;
         }
 
+        if (page === "drivers") {
+
+            breadcrumb.textContent = "Workspace / Motoristas";
+            pageTitle.textContent = "Motoristas";
+
+            dashboardElements.forEach((element) => {
+                element.style.display = "none";
+            });
+
+            pageContent.innerHTML = `
+
+                <section class="panel drivers-page">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                EQUIPE
+                            </p>
+
+                            <h3>
+                                Motoristas
+                            </h3>
+
+                        </div>
+
+                        <button class="primary-button" id="add-driver-button">
+                            + Adicionar motorista
+                        </button>
+
+                    </div>
+
+                    <div class="driver-search">
+
+                        <input
+                            type="text"
+                            id="driver-search-input"
+                            placeholder="Buscar motorista..."
+                        >
+
+                    </div>
+
+                    <div class="drivers-table"></div>
+
+                </section>
+
+            `;
+
+        const addDriverButton = document.querySelector("#add-driver-button");
+
+        addDriverButton.addEventListener("click", openAddDriverForm);
+
+        const driverSearchInput = document.querySelector("#driver-search-input");
+
+        driverSearchInput.addEventListener("input", () => {
+            renderDrivers();
+        });
+
+        loadDrivers().then(() => {
+            renderDrivers();
+        });
+
+        return;
+
+    }
 
         // ========================================
         // OUTRAS PÁGINAS
@@ -1080,8 +1668,13 @@ navLinks.forEach((link) => {
         pageContent.innerHTML = "";
 
     });
+
 });
 
 loadVehicles().then(() => {
     updateDashboardStats();
+});
+
+loadDrivers().then(() => {
+    updateDriversStats();
 });
