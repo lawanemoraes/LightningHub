@@ -68,6 +68,10 @@ function renderVehicles() {
         return;
     }
 
+    const sortedVehicles = [...vehicles].sort((a, b) =>
+        a.name.localeCompare(b.name, "pt-BR")
+    );
+
     vehicleTable.innerHTML = `
         <div class="vehicle-table-header">
 
@@ -79,7 +83,7 @@ function renderVehicles() {
 
         </div>
 
-       ${vehicles.map((vehicle, index) => `
+       ${sortedVehicles.map((vehicle, index) => `
 
             <div class="vehicle-table-row">
 
