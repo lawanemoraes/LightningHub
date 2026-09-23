@@ -78,6 +78,59 @@ app.put("/api/veiculos/:id", async (req, res) => {
     }
 });
 
+app.get("/api/motoristas", async (req, res) => {
+    try {
+        const result = await pool.query(
+            "SELECT * FROM motoristas ORDER BY id"
+        );
+
+        res.json(result.rows);
+    } catch (error) {
+        console.error("Erro ao buscar motoristas:", error.message);
+        res.status(500).json({
+            erro: "Erro ao buscar motoristas"
+        });
+    }
+});
+
+app.post("/api/motoristas", async (req, res) => {
+    try {
+        const {
+            nome,
+            cpf,
+            cnh,
+            categoria_cnh,
+            validade_cnh,
+            telefone,
+            status
+        } = req.body;
+
+        const result = await pool.query(
+            `INSERT INTO motoristas
+             (nome, cpf, cnh, categoria_cnh, validade_cnh, telefone, status)
+             VALUES ($1, $2, $3, $4, $5, $6, $7)
+             RETURNING *`,
+            [
+                nome,
+                cpf,
+                cnh,
+                categoria_cnh,
+                validade_cnh,
+                telefone,
+                status
+            ]
+        );
+
+        res.status(201).json(result.rows[0]);
+
+    } catch (error) {
+        console.error("Erro ao cadastrar motorista:", error.message);
+        res.status(500).json({
+            erro: "Erro ao cadastrar motorista"
+        });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
