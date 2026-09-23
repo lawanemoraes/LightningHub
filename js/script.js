@@ -39,6 +39,8 @@ async function loadVehicles() {
 
         vehicles = data.map((vehicle) => ({
             id: vehicle.id,
+            marca: vehicle.marca,
+            modelo: vehicle.modelo,
             name: `${vehicle.marca} ${vehicle.modelo}`,
             plate: vehicle.placa,
             year: vehicle.ano,
@@ -102,13 +104,25 @@ function renderVehicles() {
                     ${vehicle.status}
                 </span>
 
-                <button
-                    class="table-action"
-                    data-index="${index}"
-                    type="button"
-                >
-                    Ver
-                </button>
+                <div class="vehicle-actions">
+
+                    <button
+                        class="table-action"
+                        data-id="${vehicle.id}"
+                        type="button"
+                    >
+                        Ver
+                    </button>
+
+                    <button
+                        class="table-action edit-vehicle-button"
+                        data-id="${vehicle.id}"
+                        type="button"
+                    >
+                        Editar
+                    </button>
+
+                </div>
 
             </div>
 
@@ -129,8 +143,8 @@ function renderVehicles() {
 
         button.addEventListener("click", () => {
 
-            const index = Number(button.dataset.index);
-            const vehicle = vehicles[index];
+            const id = Number(button.dataset.id);
+            const vehicle = vehicles.find((item) => item.id === id);
 
             vehicleDetailsTitle.textContent = vehicle.name;
 
@@ -143,6 +157,17 @@ function renderVehicles() {
 
         });
 
+    });
+
+    const editVehicleButtons = vehicleTable.querySelectorAll(".edit-vehicle-button");
+
+    editVehicleButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const id = Number(button.dataset.id);
+            const vehicle = vehicles.find((item) => item.id === id);
+
+            openEditVehicleForm(vehicle);
+        });
     });
 
 }
@@ -217,7 +242,252 @@ updateDashboardStats();
 
 
 // ========================================
-// ABRIR FORMULÁRIO DE VEÍCULO
+// ABRIR FORMULÁRIO DE VEÍCULO - EDIÇÃO
+// ========================================
+
+function openEditVehicleForm(vehicle) {
+
+    const modal = document.createElement("div");
+
+    modal.classList.add("vehicle-modal");
+
+    modal.innerHTML = `
+
+        <div class="vehicle-modal-content">
+
+            <div class="vehicle-modal-header">
+
+                <div>
+
+                    <h3>
+                        Editar veículo
+                    </h3>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="table-action"
+                    id="close-edit-vehicle-modal"
+                >
+                    Fechar
+                </button>
+
+            </div>
+
+            <form id="edit-vehicle-form">
+
+                <div class="vehicle-form-group">
+
+                    <label for="edit-vehicle-brand">
+                        Marca
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit-vehicle-brand"
+                        value="${vehicle.marca}"
+                        required
+                    >
+
+                </div>
+
+                <div class="vehicle-form-group">
+
+                    <label for="edit-vehicle-model">
+                        Modelo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit-vehicle-model"
+                        value="${vehicle.modelo}"
+                        required
+                    >
+
+                </div>
+
+                <div class="vehicle-form-group">
+
+                    <label for="edit-vehicle-plate">
+                        Placa
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit-vehicle-plate"
+                        value="${vehicle.plate}"
+                        required
+                    >
+
+                </div>
+
+                <div class="vehicle-form-group">
+
+                    <label for="edit-vehicle-year">
+                        Ano
+                    </label>
+
+                    <input
+                        type="number"
+                        id="edit-vehicle-year"
+                        value="${vehicle.year}"
+                        min="1900"
+                        max="2100"
+                        required
+                    >
+
+                </div>
+
+                <div class="vehicle-form-group">
+
+                    <label for="edit-vehicle-type">
+                        Tipo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit-vehicle-type"
+                        value="${vehicle.type}"
+                        required
+                    >
+
+                </div>
+
+                <div class="vehicle-form-group">
+
+                    <label for="edit-vehicle-status">
+                        Status
+                    </label>
+
+                    <select
+                        id="edit-vehicle-status"
+                        required
+                    >
+
+                        <option value="Operacional" ${vehicle.status === "Operacional" ? "selected" : ""}>
+                            Operacional
+                        </option>
+
+                        <option value="Em manutenção" ${vehicle.status === "Em manutenção" ? "selected" : ""}>
+                            Em manutenção
+                        </option>
+
+                        <option value="Inativo" ${vehicle.status === "Inativo" ? "selected" : ""}>
+                            Inativo
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="vehicle-form-actions">
+
+                    <button
+                        type="button"
+                        class="table-action"
+                        id="cancel-edit-vehicle-modal"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Salvar alterações
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const closeButton = modal.querySelector("#close-edit-vehicle-modal");
+    const cancelButton = modal.querySelector("#cancel-edit-vehicle-modal");
+
+    closeButton.addEventListener("click", () => {
+        modal.remove();
+    });
+
+    cancelButton.addEventListener("click", () => {
+        modal.remove();
+    });
+
+    const editVehicleForm = modal.querySelector("#edit-vehicle-form");
+
+    editVehicleForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const marca = modal.querySelector("#edit-vehicle-brand").value;
+        const modelo = modal.querySelector("#edit-vehicle-model").value;
+        const placa = modal.querySelector("#edit-vehicle-plate").value;
+        const ano = modal.querySelector("#edit-vehicle-year").value;
+        const tipo = modal.querySelector("#edit-vehicle-type").value;
+        const status = modal.querySelector("#edit-vehicle-status").value;
+
+        try {
+
+            const response = await fetch(`http://localhost:3000/api/veiculos/${vehicle.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    marca: marca,
+                    modelo: modelo,
+                    placa: placa,
+                    ano: Number(ano),
+                    tipo: tipo,
+                    status: status
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao atualizar veículo.");
+            }
+
+            const updatedVehicle = await response.json();
+
+            const vehicleIndex = vehicles.findIndex(
+                (item) => item.id === vehicle.id
+            );
+
+            vehicles[vehicleIndex] = {
+                id: updatedVehicle.id,
+                marca: updatedVehicle.marca,
+                modelo: updatedVehicle.modelo,
+                name: `${updatedVehicle.marca} ${updatedVehicle.modelo}`,
+                plate: updatedVehicle.placa,
+                year: updatedVehicle.ano,
+                type: updatedVehicle.tipo,
+                status: updatedVehicle.status
+            };
+
+            renderVehicles();
+            updateVehiclesSummary();
+            updateDashboardStats();
+
+            modal.remove();
+
+        } catch (error) {
+
+            console.error("Erro ao atualizar veículo:", error);
+            alert("Não foi possível atualizar o veículo.");
+
+        }
+    
+    });
+
+}
+
+
+// ========================================
+// ABRIR FORMULÁRIO DE VEÍCULO - CADASTRO
 // ========================================
 
 function openAddVehicleForm() {
@@ -430,6 +700,8 @@ function openAddVehicleForm() {
 
         vehicles.push({
             id: newVehicle.id,
+            marca: newVehicle.marca,
+            modelo: newVehicle.modelo,
             name: `${newVehicle.marca} ${newVehicle.modelo}`,
             plate: newVehicle.placa,
             year: newVehicle.ano,

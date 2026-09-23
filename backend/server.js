@@ -42,6 +42,40 @@ app.post("/api/veiculos", async (req, res) => {
     }
 });
 
+app.put("/api/veiculos/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { marca, modelo, placa, ano, tipo, status } = req.body;
+
+        const result = await pool.query(
+            `UPDATE veiculos
+             SET marca = $1,
+                 modelo = $2,
+                 placa = $3,
+                 ano = $4,
+                 tipo = $5,
+                 status = $6
+             WHERE id = $7
+             RETURNING *`,
+            [marca, modelo, placa, ano, tipo, status, id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                erro: "Veículo não encontrado"
+            });
+        }
+
+        res.json(result.rows[0]);
+
+    } catch (error) {
+        console.error("Erro ao atualizar veículo:", error.message);
+        res.status(500).json({
+            erro: "Erro ao atualizar veículo"
+        });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
