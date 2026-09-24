@@ -152,7 +152,8 @@ function renderDrivers() {
 
         </div>
 
-        ${sortedDrivers.map((driver) => `
+        ${sortedDrivers.length > 0
+            ? sortedDrivers.map((driver) => `
 
             <div class="driver-table-row">
 
@@ -197,7 +198,15 @@ function renderDrivers() {
 
             </div>
 
-        `).join("")}
+        `).join("")
+        
+        : `
+            <div class ="driver-empty">
+                Nenhum motorista encontrado.
+            </div>
+
+        `
+    }
 
     `;
 
