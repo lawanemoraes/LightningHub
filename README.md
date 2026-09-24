@@ -24,8 +24,9 @@ Desenvolver, do zero, um sistema completo de gestão de frotas, passando por tod
 * desenvolvimento das funcionalidades;
 * modelagem e integração do banco de dados;
 * desenvolvimento do back-end;
+* criação e integração de uma API REST; 
 * organização e versionamento do projeto;
-* testes e melhorias.
+* testes, validações e melhorias.
 
 A proposta é transformar o LightningHub em um projeto cada vez mais completo ao longo do seu desenvolvimento.
 
@@ -35,13 +36,13 @@ A proposta é transformar o LightningHub em um projeto cada vez mais completo ao
 
 **Em desenvolvimento**
 
-O projeto já possui a estrutura inicial do sistema, banco de dados PostgreSQL, back-end com Node.js e Express e integração entre o front-end e a API.
+O projeto já possui uma estrutura funcional com **front-end em HTML, CSS e JavaScript**, **API REST desenvolvida com Node.js e Express** e **banco de dados PostgreSQL**.
 
-Atualmente, o módulo de **veículos** possui funcionalidades de cadastro, consulta, edição, busca, filtro por status, ordenação e visualização de detalhes, com persistência dos dados no PostgreSQL.
+Atualmente, os módulos de **Veículos** e **Motoristas** já possuem integração com a API e persistência dos dados no PostgreSQL.
 
 ### Atualmente trabalhando em:
 
-* Melhorias e novas funcionalidades no módulo de veículos;
+* Melhorias e refinamentos nos módulos existentes;
 * Desenvolvimento dos próximos módulos do sistema;
 * Integração entre front-end, API e banco de dados;
 * Implementação de validações e tratamento de erros;
@@ -68,6 +69,7 @@ Atualmente, o módulo de **veículos** possui funcionalidades de cadastro, consu
 ### Banco de dados
 
 * PostgreSQL
+* SQL
 
 ### Ferramentas
 
@@ -75,6 +77,7 @@ Atualmente, o módulo de **veículos** possui funcionalidades de cadastro, consu
 * GitHub
 * VS Code
 * Live Server
+* pgAdmin
 
 ---
 
@@ -102,11 +105,13 @@ O front-end realiza requisições para a API, que é responsável por processar 
 
 * [x] Dashboard inicial
 * [x] Cards de informações
+* [x] Quantidade de veículos
+* [x] Quantidade de motoristas
 * [x] Status dos veículos
+* [x] Layout responsivo
 * [ ] Botões de acesso aos módulos
 * [ ] Próximas manutenções com dados reais
 * [ ] Atividades recentes com dados reais
-* [x] Layout responsivo
 
 ### Veículos
 
@@ -127,7 +132,13 @@ O front-end realiza requisições para a API, que é responsável por processar 
 
 ### Motoristas
 
-* [ ] Cadastro de motoristas
+* [x] Consulta de motoristas através da API
+* [x] Cadastro de motoristas
+* [x] Busca por nome, CPF e CNH
+* [x] Ordenação por nome
+* [x] Mensagem para busca sem resultados
+* [x] Visualização de detalhes
+* [x] Persistência dos dados no PostgreSQL
 * [ ] Edição de motoristas
 * [ ] Associação entre motoristas e veículos
 
@@ -154,6 +165,7 @@ O front-end realiza requisições para a API, que é responsável por processar 
 * [x] Integração com PostgreSQL
 * [x] Desenvolvimento da API REST inicial
 * [x] Integração entre front-end e API
+* [x] Persistência de dados
 * [ ] Autenticação de usuários
 * [ ] Controle de acesso
 
@@ -187,7 +199,7 @@ O arquivo `database/schema.sql` contém a estrutura SQL utilizada para criação
 
 ## 🔌 API
 
-O back-end utiliza **Node.js + Express** para disponibilizar uma API REST.
+O back-end utiliza **Node.js + Express** para disponibilizar uma API REST responsável pela comunicação entre a aplicação e o banco de dados PostgreSQL.
 
 ### Veículos
 
@@ -208,6 +220,20 @@ Recebe os dados do veículo em formato JSON e realiza o cadastro no PostgreSQL.
     PUT /api/veiculos/:id
 
 Atualiza os dados de um veículo existente a partir do seu identificador.
+
+### Motoristas
+
+#### Buscar motoristas
+
+    GET /api/motoristas
+
+Retorna os motoristas cadastrados no banco de dados.
+
+#### Cadastrar motoristas
+
+    POST /api/motoristas
+
+Recebe os dados do motorista em formato JSON e realiza o cadastro no PostgreSQL.
 
 ---
 
@@ -241,11 +267,11 @@ O arquivo `.env` contém as configurações locais de acesso ao banco de dados e
 
 ## 🗺️ Próximos passos
 
-1. Finalizar as funcionalidades do módulo de veículos;
-2. Desenvolver o módulo de motoristas;
-3. Desenvolver o módulo de manutenções;
-4. Desenvolver o módulo de documentos;
-5. Implementar validações e melhorias na API;
+1. Desenvolver o módulo de manutenções;
+2. Desenvolver o módulo de documentos;
+3. Implementar edição e associação de motoristas;
+4. Implementar validações e melhorias na API;
+5. Integrar dados reais de manutenções e documentos ao dasboard;
 6. Implementar autenticação e controle de acesso;
 7. Desenvolver relatórios e indicadores;
 8. Realizar testes e melhorias gerais;
@@ -267,9 +293,11 @@ O projeto busca aplicar na prática conceitos de:
 * SQL;
 * integração entre sistemas;
 * Git e GitHub;
-* organização de projetos.
+* organização e desenvolvimento de software.
 
-O desenvolvimento também serve como forma de documentar minha evolução técnica e construir um projeto que possa fazer parte do meu portfólio.
+Além de servir como projeto de aprendizado, o LightningHub funciona como um laboratório prático para experimentação e aplicação de conceitos que poderão ser aproveitados futuramente no desenvolvimento do meu Trabalho de Graduação (TG).
+
+O desenvolvimento também permite documentar minha evolução técnica e construir, gradualmente, um projeto funcional para meu portfólio.
 
 ---
 
